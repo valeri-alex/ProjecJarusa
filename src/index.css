@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-paper font-sans text-neutral-800 antialiased; }
+  button { @apply cursor-pointer; }
+  :focus-visible { outline: 2px solid #D01A78; outline-offset: 2px; }
+}
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-2.5 text-xs font-bold tracking-wide text-white shadow-md transition hover:brightness-110 active:scale-[.98] disabled:opacity-50; }
+  .btn-outline { @apply inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-6 py-2.5 text-xs font-bold tracking-wide text-neutral-700 transition hover:bg-neutral-50; }
+  .input { @apply w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-xs text-neutral-800 placeholder:text-neutral-400 focus:border-jar-500 focus:outline-none focus:ring-2 focus:ring-jar-200; }
+  .label { @apply mb-1 block text-[11px] font-semibold text-neutral-800; }
+  .card { @apply rounded-2xl bg-white shadow-card; }
+  .th { @apply px-4 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-neutral-500; }
+  .td { @apply px-4 py-3 text-xs text-neutral-700; }
+}
+@keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: none; } }
+.pop { animation: pop .18s ease-out; }
+@media (prefers-reduced-motion: reduce) { .pop { animation: none; } }
