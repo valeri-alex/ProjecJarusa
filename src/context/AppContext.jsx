@@ -21,6 +21,27 @@ export function AppProvider({ children }) {
     saved?.addresses || [{ id: 'a1', label: 'Casa', line: 'Av. Larco 1234, Dpto. 502', district: 'Miraflores', city: 'Lima', zip: '15074', ref: 'Frente al parque Kennedy', main: true }],
   )
   const [prefs, setPrefs] = useState(saved?.prefs || { skin: 'Mixta', lip: LIP_TONES[0], shadow: SHADOW_TONES[0], accent: ACCENTS[0] })
+  // Vista accesible
+  // Preferencias de accesibilidad por usuario
+const [accessibilityByUser, setAccessibilityByUser] = useState(
+  saved?.accessibilityByUser || {}
+)
+
+const accessibility = accessibilityByUser[session] || {
+  palette: 'default',
+}
+
+const setPalette = (palette) => {
+  if (!session) return
+
+  const validPalettes = ['default', 'colorblind', 'low-vision']
+  if (!validPalettes.includes(palette)) return
+
+  setAccessibilityByUser((prev) => ({
+    ...prev,
+    [session]: { palette },
+  }))
+}
   const [coupon, setCoupon] = useState(null)
   const [toast, setToast] = useState(null)
   const [reset, setReset] = useState(null)
@@ -28,9 +49,16 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem(KEY, JSON.stringify({ users, session, products, orders, cart, wishlist, addresses, prefs }))
+      localStorage.setItem(KEY, JSON.stringify({ users, session, products, orders, cart, wishlist, addresses, prefs, accessibilityByUser }))
     } catch { /* almacenamiento lleno o bloqueado: se ignora en el prototipo */ }
-  }, [users, session, products, orders, cart, wishlist, addresses, prefs])
+  }, [users, session, products, orders, cart, wishlist, addresses, prefs, accessibilityByUser      ])
+
+  // Aplicar vista accesible
+  useEffect(() => {
+  document.documentElement.dataset.palette = accessibility.palette
+}, [accessibility.palette])
+
+
 
   const notify = useCallback((msg, type = 'ok') => {
     setToast({ msg, type, k: Date.now() })
@@ -39,6 +67,10 @@ export function AppProvider({ children }) {
   }, [])
 
   const user = users.find((u) => u.email === session) || null
+
+  
+
+
 
   // ── auth ───────────────────────────────────────────────
   const login = (email, password) => {
@@ -121,6 +153,8 @@ export function AppProvider({ children }) {
     products, saveProduct, deleteProduct, orders, setOrderStatus, placeOrder,
     cart, cartLines, cartCount, totals, coupon, addToCart, setQty, removeFromCart, applyCoupon,
     wishlist, toggleWish, addresses, setAddresses, prefs, setPrefs, toast, notify, resetDemo,
+    accessibility,
+    setPalette,
   }
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
 }

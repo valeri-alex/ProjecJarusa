@@ -1,0 +1,93 @@
+
+
+
+
+/* PALETA PREDETERMINADA: ROSADA */
+:root,
+:root[data-palette="default"] {
+  --color-primary: #D01A78;
+  --color-primary-hover: #B80F68;
+  --color-primary-text: #FFFFFF;
+  --color-background: #FFFFFF;
+  --color-surface: #FFF1F7;
+  --color-text: #263238;
+  --color-text-secondary: #595959;
+  --color-border: #E5DCE1;
+}
+
+/* PALETA PARA DALTONISMO */
+:root[data-palette="colorblind"] {
+  --color-primary: #0072B2;
+  --color-primary-hover: #005A8D;
+  --color-primary-text: #FFFFFF;
+  --color-background: #FFFFFF;
+  --color-surface: #F0F5F8;
+  --color-text: #172B3A;
+  --color-text-secondary: #465B69;
+  --color-border: #9AAEBB;
+}
+
+/* PALETA PARA BAJA VISIÓN */
+:root[data-palette="low-vision"] {
+  --color-primary: #FFFF00;
+  --color-primary-hover: #E6E600;
+  --color-primary-text: #000000;
+  --color-background: #000000;
+  --color-surface: #121212;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #FFFFFF;
+  --color-border: #FFFFFF;
+}
+
+/* CLASES DE ACCESIBILIDAD */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.accessible-surface {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.accessible-text {
+  color: var(--color-text);
+}
+
+.accessible-secondary {
+  color: var(--color-text-secondary);
+}
+
+.accessible-border {
+  border-color: var(--color-border);
+}
+
+.accessible-primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-text);
+}
+
+.accessible-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

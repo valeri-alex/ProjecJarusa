@@ -4,16 +4,45 @@ export default {
   theme: {
     extend: {
       colors: {
-        jar: { 50: '#FFF1F7', 100: '#FDE4EF', 200: '#FBC8DF', 300: '#F59BC4', 400: '#EC5FA1', 500: '#E0338A', 600: '#D01A78', 700: '#B80F68', 800: '#8F0C52', 900: '#5E0835' },
-        paper: '#EFEDEE',
-        side: '#F2F0F1',
+        jar: {
+          50: '#F9EEF2',
+          100: '#F2DCE5',
+          200: '#E6B8CA',
+          300: '#D58BA9',
+          400: '#B85F83',
+          500: '#963B64',
+          600: '#853253',
+          700: '#702744',
+          800: '#572039',
+          900: '#3D1729',
+        },
+
+        paper: '#FAF8F9',
+        side: '#F4EEF1',
+
+        brand: '#853253',
+
+        accessible: {
+          text: '#243247',
+          success: '#24766F',
+          warning: '#A85C12',
+          white: '#FFFFFF',
+        },
       },
+
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
         logo: ['"Cormorant Garamond"', 'Georgia', 'serif'],
       },
-      boxShadow: { card: '0 2px 14px rgba(120,20,70,.08)', pop: '0 18px 50px rgba(120,20,70,.25)' },
-      backgroundImage: { brand: 'linear-gradient(90deg,#C8106C 0%,#E8348F 100%)' },
+
+      boxShadow: {
+        card: '0 2px 14px rgba(80, 30, 55, .10)',
+        pop: '0 18px 50px rgba(80, 30, 55, .20)',
+      },
+
+      backgroundImage: {
+        brand: 'linear-gradient(90deg, #702744 0%, #963B64 100%)',
+      },
     },
   },
   plugins: [],

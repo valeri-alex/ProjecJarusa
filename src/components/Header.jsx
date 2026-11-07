@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { ChevronDown, LogOut, Search, ShoppingBag, SlidersHorizontal, Store, UserRound } from 'lucide-react'
+import { ChevronDown, LogOut, Search, ShoppingBag, SlidersHorizontal, Store, UserRound, Eye,
+  Ear,
+  Check } from 'lucide-react'
 import { useApp } from '../context/AppContext'
 import { Avatar, Logo } from './ui'
+import AccesibilityVisual from './Accesibility/AccesibilityVisual'
+
 
 export function useClickOutside(open, close) {
   const ref = useRef(null)
@@ -45,14 +49,72 @@ function StoreMenu() {
   const { user, logout } = useApp()
   const nav = useNavigate()
   const [open, setOpen] = useState(false)
+  const [visualOpen, setVisualOpen] = useState(false)
+const [auditoryOpen, setAuditoryOpen] = useState(false)
+const [visualMode, setVisualMode] = useState('default')
   const ref = useClickOutside(open, () => setOpen(false))
   const go = (to) => { setOpen(false); nav(to) }
+  // modo visual
+  useEffect(() => {
+  document.documentElement.dataset.visualMode = visualMode
+}, [visualMode])
   return (
     <div className="relative" ref={ref}>
       <button onClick={() => setOpen(!open)} aria-label="Menú de cuenta" aria-haspopup="menu" aria-expanded={open}><SlidersHorizontal size={16} /></button>
       {open && (
-        <div role="menu" className="pop absolute right-0 top-8 z-40 w-52 overflow-hidden rounded-xl bg-white py-1 text-xs text-neutral-700 shadow-pop">
+        <div role="menu" className="pop absolute right-0 top-8 z-40 w-64 overflow-hidden rounded-xl bg-white py-1 text-xs text-neutral-700 shadow-pop">
           <p className="px-4 pb-1 pt-2 text-[10px] text-neutral-400">{user?.email}</p>
+          <div className="border-t border-neutral-100 px-3 py-3">
+
+  <p className="mb-3 text-xs font-semibold text-neutral-500">
+    Accesibilidad
+  </p>
+
+  {/* VISUAL */}
+  <button
+    type="button"
+    onClick={() => setVisualOpen(!visualOpen)}
+    className="flex w-full items-center justify-between rounded-lg px-2 py-2 hover:bg-jar-50"
+    aria-expanded={visualOpen}
+  >
+    <span className="flex items-center gap-2">
+      <Eye size={15} />
+      Visual
+    </span>
+    <ChevronDown size={14} />
+  </button>
+
+  {visualOpen && (
+    <div className="ml-4 border-l-2 border-neutral-100 pl-3">
+
+      <AccesibilityVisual></AccesibilityVisual>
+
+    </div>
+  )}
+
+  {/* AUDITIVA */}
+  <button
+    type="button"
+    onClick={() => setAuditoryOpen(!auditoryOpen)}
+    className="flex w-full items-center justify-between rounded-lg px-2 py-2 hover:bg-jar-50"
+    aria-expanded={auditoryOpen}
+  >
+    <span className="flex items-center gap-2">
+      <Ear size={15} />
+      Auditiva
+    </span>
+    <ChevronDown size={14} />
+  </button>
+
+  {auditoryOpen && (
+    <div className="ml-4 border-l-2 border-neutral-100 py-2 pl-3">
+      <p className="px-2 text-neutral-500">
+        Opciones de accesibilidad auditiva.
+      </p>
+    </div>
+  )}
+
+</div>
           <button role="menuitem" onClick={() => go(user?.role === 'admin' ? '/admin' : '/cuenta')} className="block w-full px-4 py-2.5 text-left hover:bg-jar-50">{user?.role === 'admin' ? 'Panel de administración' : 'Mi cuenta'}</button>
           {user?.role !== 'admin' && <button role="menuitem" onClick={() => go('/cuenta/pedidos')} className="block w-full px-4 py-2.5 text-left hover:bg-jar-50">Mis pedidos</button>}
           <button role="menuitem" onClick={() => { logout(); go('/') }} className="block w-full border-t border-neutral-100 px-4 py-2.5 text-left text-jar-700 hover:bg-jar-50">Cerrar sesión</button>
