@@ -20,8 +20,8 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-jar-700 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md transition hover:bg-jar-800 active:scale-[.98] disabled:opacity-50;
-  }
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-jar-900 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md transition hover:bg-jar-800 active:scale-[.98] disabled:opacity-50;
+}
 
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-neutral-500 bg-white px-6 py-3 text-sm font-bold tracking-wide text-accessible-text transition hover:bg-jar-50;

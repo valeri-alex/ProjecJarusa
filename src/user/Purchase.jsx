@@ -22,7 +22,7 @@ export function Cart() {
       <SubNav active="oferta" categories={CATEGORIES} />
       <div className="mx-auto grid max-w-6xl gap-6 px-5 py-6 lg:grid-cols-[1fr_320px]">
         <div>
-          <h1 className="mb-4 text-lg font-extrabold text-neutral-800">MI CARRITO <span className="ml-1 text-[11px] font-medium text-neutral-400">{cartCount} {cartCount === 1 ? 'producto' : 'productos'}</span></h1>
+          <h1 className="mb-4 text-lg font-extrabold text-brand">MI CARRITO <span className="ml-1 text-[14px] font-bold text-brand">{cartCount} {cartCount === 1 ? 'producto' : 'productos'}</span></h1>
 
           {cartLines.length === 0 ? (
             <div className="card grid place-items-center gap-3 py-16 text-center">
@@ -62,7 +62,7 @@ export function Cart() {
 
           {suggestions.length > 0 && (
             <>
-              <h2 className="mb-2 mt-6 text-[11px] font-extrabold tracking-wider text-neutral-800">TE PUEDE GUSTAR</h2>
+              <h2 className="mb-2 mt-6 text-lg font-extrabold tracking-wider text-brand">TE PUEDE GUSTAR</h2>
               <div className="grid gap-3 sm:grid-cols-3">
                 {suggestions.map((p) => (
                   <div key={p.id} className="card flex items-center gap-2.5 p-2.5">

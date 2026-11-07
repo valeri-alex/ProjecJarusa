@@ -20,7 +20,7 @@ const BENEFICIOS = [
 
 const Heading = ({ children }) => (
   <>
-    <h2 className="text-sm font-extrabold text-neutral-800">{children}</h2>
+    <h2 className="text-[18px] font-extrabold text-neutral-800">{children}</h2>
     <i className="mb-3 mt-1 block h-0.5 w-6 bg-jar-600" />
   </>
 )
@@ -59,12 +59,12 @@ export default function Landing() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#7b5547] from-50% via-[#7b5547]/75 to-transparent" />
         <div className="px-6 py-14 text-white md:px-16">
           <h1 className="text-3xl font-medium leading-tight tracking-wide md:text-[44px]">LA CIENCIA DE LA<br />BELLEZA <i className="font-logo text-[1.15em] font-normal">natural</i></h1>
-          <p className="mt-3 max-w-xs text-xs text-white/85">Cosmética inspirada en la naturaleza, formulada con ciencia.</p>
+          <p className="mt-4 max-w-sm text-lg font-semibold leading-relaxed text-white">Cosmética inspirada en la naturaleza, formulada con ciencia.</p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link to={shopTo} className="btn">{user ? 'IR A LA TIENDA' : 'EMPIEZA A COMPRAR'}<ArrowRight size={14} /></Link>
             <button onClick={() => setStory(true)} className="rounded-full border border-white/70 px-6 py-2.5 text-xs font-bold tracking-wide text-white transition hover:bg-white/15">NUESTRA HISTORIA</button>
           </div>
-          {!user && <p className="mt-3 text-[11px] text-white/80">¿Primera vez? <Link to="/registro" className="font-bold underline underline-offset-4">Crea tu cuenta</Link> y acumula puntos Jarusa Plus.</p>}
+          {!user && <p className="mt-3 text-base text-white">¿Primera vez? <Link to="/registro" className="font-bold underline underline-offset-4">Crea tu cuenta</Link> y acumula puntos Jarusa Plus.</p>}
         </div>
       </section>
 
@@ -106,10 +106,10 @@ export default function Landing() {
       <section className="mx-auto grid max-w-6xl gap-8 px-6 py-10 md:grid-cols-3">
         <div>
           <Heading>Filosofía</Heading>
-          <p className="text-xs leading-relaxed text-neutral-600">En Jarusa creemos que la belleza nace de lo natural. Formulamos cosméticos con ingredientes botánicos y respaldo dermatológico para realzar tu esencia, cuidando tu piel y el planeta en cada paso de tu rutina.</p>
+          <p className="text-[15px] font-semibold leading-relaxed text-accesible-text">En Jarusa creemos que la belleza nace de lo natural. Formulamos cosméticos con ingredientes botánicos y respaldo dermatológico para realzar tu esencia, cuidando tu piel y el planeta en cada paso de tu rutina.</p>
         </div>
         <div>
-          <Heading>Colecciones</Heading>
+          <Heading   >Colecciones</Heading>
           <Link to={shopTo} className="group relative block aspect-[16/9] overflow-hidden rounded-xl">
             {COLECCIONES.map((c, i) => <img key={c.img} src={c.img} alt={c.name} className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${i === col ? 'opacity-100' : 'opacity-0'}`} />)}
             <span className="absolute bottom-2 left-2 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold text-jar-700 opacity-0 transition group-hover:opacity-100">Ver {COLECCIONES[col].name}</span>
@@ -120,7 +120,8 @@ export default function Landing() {
           <Heading>Testimonios</Heading>
           <div className="rounded-xl bg-neutral-100 p-4">
             <Quote size={16} className="mb-1 text-jar-500" />
-            <p className="min-h-[72px] text-xs leading-relaxed text-neutral-600">{t.text}</p>
+            
+            <p className="min-h-[100px] text-lg leading-relaxed text-neutral-600">{t.text}</p>
             <div className="mt-3 flex items-center gap-2"><Avatar name={t.name} size="h-7 w-7" text="text-[9px]" /><div className="text-[10px] leading-tight"><b className="block text-neutral-800">{t.name}</b><span className="text-neutral-500">{t.role}</span></div></div>
           </div>
           <Dots n={TESTIMONIALS.length} i={tes} set={setTes} label="Testimonio" />
@@ -141,7 +142,7 @@ export default function Landing() {
           ) : (
             <>
               <h2 className="text-xl font-extrabold md:text-2xl">Empieza a comprar</h2>
-              <p className="mx-auto mt-2 max-w-md text-xs text-white/85">Inicia sesión o crea tu cuenta gratis y acumula puntos Jarusa Plus en cada pedido.</p>
+              <p className="mx-auto mt-2 max-w-md text-lg text-white/85">Inicia sesión o crea tu cuenta gratis y acumula puntos Jarusa Plus en cada pedido.</p>
               <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
                 <Link to="/login" className="rounded-full bg-white px-7 py-2.5 text-xs font-bold text-jar-700 shadow-md transition hover:bg-jar-50">INICIAR SESIÓN</Link>
                 <Link to="/registro" className="rounded-full border border-white/80 px-7 py-2.5 text-xs font-bold text-white transition hover:bg-white/15">REGISTRARSE</Link>

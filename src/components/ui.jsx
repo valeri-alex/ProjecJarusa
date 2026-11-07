@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Eye, EyeOff, ImagePlus, X, Check, AlertCircl
 import { useApp } from '../context/AppContext'
 
 export const Logo = ({ className = 'text-3xl', to }) => {
-  const el = <span className={`block font-logo font-normal leading-none tracking-wide ${className}`}>Jarusa</span>
+  const el = <span className={`block text-4xl font-logo font-bold leading-none tracking-wide ${className}`}>Jarusa</span>
   return to ? <Link to={to} aria-label="Jarusa, inicio" className="flex items-center justify-center leading-none">{el}</Link> : el
 }
 
@@ -17,13 +17,13 @@ export const Avatar = ({ name, photo, size = 'h-8 w-8', text = 'text-[11px]', ri
 )
 
 const BADGE = {
-  Entregado: 'bg-emerald-50 text-emerald-700',
-  'En camino': 'bg-sky-50 text-sky-700',
-  Pendiente: 'bg-amber-50 text-amber-700',
-  Cancelado: 'bg-rose-50 text-rose-700',
-  Activo: 'bg-emerald-50 text-emerald-700',
-  'Stock bajo': 'bg-amber-50 text-amber-700',
-  Agotado: 'bg-rose-50 text-rose-700',
+  Entregado: 'bg-[#DCEFEA] text-[#24766F]',
+  'En camino': 'bg-[#DCE8F5] text-[#174A78]',
+  Pendiente: 'bg-[#FCE8C3] text-[#A85C12]',
+  Cancelado: 'bg-[#E5E7EB] text-[#243247]',
+  Activo: 'bg-[#DCEFEA] text-[#24766F]',
+  'Stock bajo': 'bg-[#FCE8C3] text-[#A85C12]',
+  Agotado: 'bg-[#E5E7EB] text-[#243247]',
 }
 export const Badge = ({ children, className = '' }) => (
   <span className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 text-[10px] font-semibold ${BADGE[children] || 'bg-neutral-100 text-neutral-600'} ${className}`}>

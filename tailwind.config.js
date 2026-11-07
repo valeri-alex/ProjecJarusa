@@ -21,9 +21,12 @@ export default {
         side: '#F4EEF1',
 
         brand: '#853253',
+        
+
+        navbar:'#526780',
 
         accessible: {
-          text: '#243247',
+          text: '#17202A',
           success: '#24766F',
           warning: '#A85C12',
           white: '#FFFFFF',

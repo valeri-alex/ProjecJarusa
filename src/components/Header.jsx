@@ -154,7 +154,7 @@ export default function Header({ variant = 'store', admin = false }) {
     )
   } else {
     home = '/'
-    left = <Link to="/tienda" className="hidden text-[11px] font-bold tracking-wide hover:underline sm:block">TIENDA</Link>
+    left = <Link to="/tienda" className="hidden text-base font-bold tracking-wide hover:underline sm:block">TIENDA</Link>
     right = user ? (
       <div className="flex items-center gap-4">
         <Link to="/tienda" aria-label="Buscar"><Search size={16} /></Link>
@@ -165,7 +165,7 @@ export default function Header({ variant = 'store', admin = false }) {
         <StoreMenu />
       </div>
     ) : (
-      <div className="flex items-center gap-3 text-[11px] font-bold">
+      <div className="flex items-center gap-3 text-base font-bold">
         <Link to="/login" className="hover:underline">Iniciar sesión</Link>
         <Link to="/registro" className="rounded-full bg-white px-3.5 py-1.5 text-jar-700 shadow-sm transition hover:bg-jar-50">Registrarse</Link>
       </div>
@@ -173,7 +173,7 @@ export default function Header({ variant = 'store', admin = false }) {
   }
 
   return (
-    <header className="sticky top-0 z-30 grid h-14 shrink-0 grid-cols-[1fr_auto_1fr] items-center gap-2 bg-brand px-4 text-white md:px-6">
+    <header className="sticky top-0 z-30 grid h-14 shrink-0 grid-cols-[1fr_auto_1fr] items-center gap-2 bg-navbar px-4 text-white md:px-6">
       <div className="flex items-center justify-start">{left}</div>
       <Logo className="text-[28px]" to={home} />
       <div className="flex items-center justify-end">{right}</div>
